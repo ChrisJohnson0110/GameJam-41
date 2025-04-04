@@ -12,7 +12,7 @@ public class SpawningMachine : MonoBehaviour
 
     [SerializeField] private int ButtonCooldown;
     private float cooldown;
-    bool canSpawnObjects;
+    private bool canSpawnObjects;
 
     private void Start()
     {
