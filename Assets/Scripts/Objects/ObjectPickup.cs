@@ -37,6 +37,7 @@ public class ObjectPickup : MonoBehaviour
 
             joint = gameObject.AddComponent<FixedJoint>();
             joint.connectedBody = heldObjectRb;
+            heldObjectRb.GetComponent<PickupObject>().isHeld = true;
         }
     }
 
@@ -46,6 +47,7 @@ public class ObjectPickup : MonoBehaviour
         {
             Destroy(joint);
         }
+        heldObjectRb.GetComponent<PickupObject>().isHeld = false;
         heldObjectRb = null;
     }
 
