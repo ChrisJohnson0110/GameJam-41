@@ -15,10 +15,11 @@ public class DoorEat : MonoBehaviour
     {
         if (other.gameObject.layer == LayerMask.NameToLayer("Pickup"))
         {
-            hungerBar.DecreaseHunger(other.gameObject.GetComponent<PickupObject>().eatValue);
-            Destroy(other.gameObject);
+            if (other.GetComponent<PickupObject>().isHeld == false)
+            {
+                hungerBar.DecreaseHunger(other.gameObject.GetComponent<PickupObject>().eatValue);
+                Destroy(other.gameObject);
+            }
         }
     }
-
-
 }

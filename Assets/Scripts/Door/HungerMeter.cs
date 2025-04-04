@@ -16,5 +16,9 @@ public class HungerMeter : MonoBehaviour
     public void DecreaseHunger(int a_amount)
     {
         HungerSlider.value += a_amount;
+        if (HungerSlider.value >= 100)
+        {
+            GameObject.FindAnyObjectByType<StateManager>().Win();
+        }
     }
 }

@@ -56,7 +56,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (!Physics.Raycast(ray, out RaycastHit hit, rayDistance))
         {
-            rb.AddForce(new Vector3(0, -50000, 0), ForceMode.Force);
+            rb.AddForce(new Vector3(0, -50, 0));
         }
     }
 
