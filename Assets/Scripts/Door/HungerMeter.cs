@@ -5,17 +5,16 @@ using UnityEngine.UI;
 
 public class HungerMeter : MonoBehaviour
 {
-    [SerializeField] private Slider hungerSlider;
+    [SerializeField] private Slider HungerSlider;
 
-    // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
-        
+        HungerSlider.maxValue = 100;
+        HungerSlider.value = 0;
     }
 
-    // Update is called once per frame
-    void Update()
+    public void DecreaseHunger(int a_amount)
     {
-        
+        HungerSlider.value += a_amount;
     }
 }

@@ -10,18 +10,17 @@ public class ObjectPickup : MonoBehaviour
     private GameObject objectToPickup;
     private bool isInRange = false;
     
-
     private void Update()
     {
-        if (isInRange == true)
+        if (Input.GetKeyDown(KeyCode.E))
         {
-            if (Input.GetKeyDown(KeyCode.E))
+            if (heldObjectRb != null)
             {
-                if (heldObjectRb != null)
-                {
-                    Drop();
-                }
-                else
+                Drop();
+            }
+            else
+            {
+                if (isInRange == true)
                 {
                     Pickup();
                 }
@@ -38,7 +37,6 @@ public class ObjectPickup : MonoBehaviour
 
             joint = gameObject.AddComponent<FixedJoint>();
             joint.connectedBody = heldObjectRb;
-
         }
     }
 

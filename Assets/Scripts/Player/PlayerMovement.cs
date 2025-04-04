@@ -15,6 +15,12 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
+        HandleMovement();
+        GroundCheck();
+    }
+
+    private void HandleMovement()
+    {
         float h = Input.GetAxisRaw("Horizontal");
         float v = Input.GetAxisRaw("Vertical");
 
@@ -37,18 +43,22 @@ public class PlayerMovement : MonoBehaviour
             rb.AddForce(desiredForce, ForceMode.Force);
         }
 
+    }
+
+    private void GroundCheck()
+    {
         Ray ray = new Ray(transform.position, Vector3.down);
 
         float rayDistance = 10f; // How far down to check
 
         if (Physics.Raycast(ray, out RaycastHit hit, rayDistance))
         {
-            
+
         }
         else
         {
             rb.AddForce(new Vector3(0, -50000, 0), ForceMode.Force);
         }
-
     }
+
 }
