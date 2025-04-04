@@ -8,6 +8,11 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody rb;
     private Vector3 inputDirection;
 
+    void Start()
+    {
+        rb = GetComponent<Rigidbody>();
+    }
+
     void Update()
     {
         float h = Input.GetAxisRaw("Horizontal");
