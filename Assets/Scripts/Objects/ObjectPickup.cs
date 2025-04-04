@@ -30,14 +30,17 @@ public class ObjectPickup : MonoBehaviour
 
     private void Pickup()
     {
-        Rigidbody rb = objectToPickup.GetComponent<Rigidbody>();
-        if (rb != null && !rb.isKinematic)
+        if (objectToPickup != null)
         {
-            heldObjectRb = rb;
+            Rigidbody rb = objectToPickup.GetComponent<Rigidbody>();
+            if (rb != null && !rb.isKinematic)
+            {
+                heldObjectRb = rb;
 
-            joint = gameObject.AddComponent<FixedJoint>();
-            joint.connectedBody = heldObjectRb;
-            heldObjectRb.GetComponent<PickupObject>().isHeld = true;
+                joint = gameObject.AddComponent<FixedJoint>();
+                joint.connectedBody = heldObjectRb;
+                heldObjectRb.GetComponent<PickupObject>().isHeld = true;
+            }
         }
     }
 

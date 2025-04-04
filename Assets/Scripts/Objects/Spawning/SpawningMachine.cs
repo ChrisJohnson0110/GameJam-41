@@ -10,30 +10,54 @@ public class SpawningMachine : MonoBehaviour
     [SerializeField] private Vector3 spawnedObjectOffset;
     [SerializeField] private int numberOfObjectsToSpawn = 5;
 
+    [SerializeField] private int ButtonCooldown;
+    private float cooldown;
+    bool canSpawnObjects;
 
     private void Start()
     {
         spawnPostition = gameObject.transform.GetChild(0);
+        cooldown = ButtonCooldown;
+    }
+
+    private void Update()
+    {
+        if (cooldown <= 0)
+        {
+            if (canSpawnObjects == false)
+            {
+                canSpawnObjects = true;
+            }
+        }
+        else
+        {
+            cooldown -= Time.deltaTime;
+        }
     }
 
     public void SpawnObejcts()
     {
-        if (objectsToThrow != null)
+        if (canSpawnObjects == true)
         {
-            for (int i = 0; i < numberOfObjectsToSpawn; i++)
+            if (objectsToThrow != null)
             {
-                GameObject go = Instantiate(objectsToThrow[Random.Range(0, objectsToThrow.Count)], spawnPostition.position, spawnPostition.rotation);
-                if (go.GetComponent<Rigidbody>() == null)
+                for (int i = 0; i < numberOfObjectsToSpawn; i++)
                 {
-                    go.AddComponent<Rigidbody>();
+                    GameObject go = Instantiate(objectsToThrow[Random.Range(0, objectsToThrow.Count)], spawnPostition.position, spawnPostition.rotation);
+                    if (go.GetComponent<Rigidbody>() == null)
+                    {
+                        go.AddComponent<Rigidbody>();
+                    }
+
+                    Vector3 ObjectForce = new Vector3(spawnedObjectForce.x + Random.Range(-spawnedObjectOffset.x, spawnedObjectOffset.x),
+                                                      spawnedObjectForce.y + Random.Range(-spawnedObjectOffset.y, spawnedObjectOffset.y),
+                                                      spawnedObjectForce.z + Random.Range(-spawnedObjectOffset.z, spawnedObjectOffset.z));
+
+                    go.GetComponent<Rigidbody>().AddForce(ObjectForce);
                 }
-
-                Vector3 ObjectForce = new Vector3(spawnedObjectForce.x + Random.Range(-spawnedObjectOffset.x, spawnedObjectOffset.x),
-                                                  spawnedObjectForce.y + Random.Range(-spawnedObjectOffset.y, spawnedObjectOffset.y),
-                                                  spawnedObjectForce.z + Random.Range(-spawnedObjectOffset.z, spawnedObjectOffset.z));
-
-                go.GetComponent<Rigidbody>().AddForce(ObjectForce);
             }
+            canSpawnObjects = false;
+            cooldown = ButtonCooldown;
         }
     }
 }

@@ -6,7 +6,7 @@ public class PlayerMovement : MonoBehaviour
     public float moveSpeed = 6f;
     public float maxSpeed = 6f;
     private Rigidbody rb;
-    public Vector3 inputDirection;
+    [HideInInspector] public Vector3 inputDirection;
 
     void Start()
     {
@@ -34,7 +34,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (inputDirection == Vector3.zero)
         {
-            rb.velocity = Vector3.Lerp(rb.velocity, Vector3.zero, 0.001f);
+            rb.velocity = Vector3.Lerp(rb.velocity, Vector3.zero, 0.01f);
         }
         else
         {
