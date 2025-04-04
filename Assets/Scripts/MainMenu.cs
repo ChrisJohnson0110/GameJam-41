@@ -3,14 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using TMPro;
 
 public class MainMenu : MonoBehaviour
 {
     [SerializeField] private Button switchSceneButton;
+    [SerializeField] private TMP_Text loadingText;
     private AsyncOperation asyncLoad;
     void Start()
     {
-        switchSceneButton.interactable = false;
+        switchSceneButton.gameObject.SetActive(false);
         StartCoroutine(LoadSceneInBackground());
     }
 
@@ -24,10 +26,22 @@ public class MainMenu : MonoBehaviour
         asyncLoad = SceneManager.LoadSceneAsync("GameScene");
         asyncLoad.allowSceneActivation = false;
 
+        loadingText.text = asyncLoad.progress.ToString();
+
         while (asyncLoad.progress < 0.9f)
         {
             yield return null;
         }
-        switchSceneButton.interactable = true;
+
+        StartCoroutine(WaitThenDoSomething());
+
+        switchSceneButton.gameObject.SetActive(true);
+        loadingText.gameObject.SetActive(false);
     }
+
+    IEnumerator WaitThenDoSomething()
+    {
+        yield return new WaitForSeconds(2f);
+    }
+
 }
