@@ -46,7 +46,6 @@ public class ObjectPickup : MonoBehaviour
         {
             Destroy(joint);
         }
-
         heldObjectRb = null;
     }
 

@@ -6,7 +6,7 @@ public class PlayerMovement : MonoBehaviour
     public float moveSpeed = 6f;
     public float maxSpeed = 6f;
     private Rigidbody rb;
-    private Vector3 inputDirection;
+    public Vector3 inputDirection;
 
     void Start()
     {
