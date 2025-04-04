@@ -28,7 +28,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (inputDirection == Vector3.zero)
         {
-            rb.velocity = Vector3.Lerp(rb.velocity, Vector3.zero, 0.01f);
+            rb.velocity = Vector3.Lerp(rb.velocity, Vector3.zero, 0.001f);
         }
         else
         {
@@ -37,7 +37,18 @@ public class PlayerMovement : MonoBehaviour
             rb.AddForce(desiredForce, ForceMode.Force);
         }
 
+        Ray ray = new Ray(transform.position, Vector3.down);
+
+        float rayDistance = 10f; // How far down to check
+
+        if (Physics.Raycast(ray, out RaycastHit hit, rayDistance))
+        {
+            
+        }
+        else
+        {
+            rb.AddForce(new Vector3(0, -50000, 0), ForceMode.Force);
+        }
+
     }
-
-
 }
