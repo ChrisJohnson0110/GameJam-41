@@ -2,13 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class MainMenu : MonoBehaviour
 {
-    // Start is called before the first frame update
+    [SerializeField] private Button switchSceneButton;
+    private AsyncOperation asyncLoad;
     void Start()
     {
-        StartCoroutine(LoadSceneAsync());
+        switchSceneButton.interactable = false;
+        StartCoroutine(LoadSceneInBackground());
     }
 
     public void StartGame()
@@ -16,15 +19,15 @@ public class MainMenu : MonoBehaviour
         SceneManager.LoadScene("GameScene");
     }
 
-
-    IEnumerator LoadSceneAsync()
+    IEnumerator LoadSceneInBackground()
     {
-        AsyncOperation operation = SceneManager.LoadSceneAsync("GameScene");
+        asyncLoad = SceneManager.LoadSceneAsync("GameScene");
+        asyncLoad.allowSceneActivation = false;
 
-        while (!operation.isDone)
+        while (asyncLoad.progress < 0.9f)
         {
-            Debug.Log("Loading progress: " + (operation.progress * 100) + "%");
             yield return null;
         }
+        switchSceneButton.interactable = true;
     }
 }

@@ -26,10 +26,13 @@ public class PlayerMovement : MonoBehaviour
 
         Vector3 forward = Camera.main.transform.forward;
         Vector3 right = Camera.main.transform.right;
+
         forward.y = 0f;
         right.y = 0f;
 
-        //inputDirection = new Vector3(h, 0, v).normalized;
+        forward.Normalize();
+        right.Normalize();
+
         inputDirection = (h * right) + (v * forward);
 
         if (inputDirection == Vector3.zero)
@@ -49,13 +52,9 @@ public class PlayerMovement : MonoBehaviour
     {
         Ray ray = new Ray(transform.position, Vector3.down);
 
-        float rayDistance = 10f; // How far down to check
+        float rayDistance = 10f;
 
-        if (Physics.Raycast(ray, out RaycastHit hit, rayDistance))
-        {
-
-        }
-        else
+        if (!Physics.Raycast(ray, out RaycastHit hit, rayDistance))
         {
             rb.AddForce(new Vector3(0, -50000, 0), ForceMode.Force);
         }
