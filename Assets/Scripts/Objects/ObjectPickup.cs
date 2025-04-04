@@ -4,15 +4,69 @@ using UnityEngine;
 
 public class ObjectPickup : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    private Rigidbody heldObjectRb;
+    private FixedJoint joint;
+
+    private GameObject objectToPickup;
+    private bool isInRange = false;
+    
+
+    private void Update()
     {
-        
+        if (isInRange == true)
+        {
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                if (heldObjectRb != null)
+                {
+                    Drop();
+                }
+                else
+                {
+                    Pickup();
+                }
+            }
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Pickup()
     {
-        
+        Rigidbody rb = objectToPickup.GetComponent<Rigidbody>();
+        if (rb != null && !rb.isKinematic)
+        {
+            heldObjectRb = rb;
+
+            joint = gameObject.AddComponent<FixedJoint>();
+            joint.connectedBody = heldObjectRb;
+
+        }
+    }
+
+    private void Drop()
+    {
+        if (joint != null)
+        {
+            Destroy(joint);
+        }
+
+        heldObjectRb = null;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.layer == LayerMask.NameToLayer("Pickup"))
+        {
+            isInRange = true;
+            objectToPickup = other.gameObject;
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.layer == LayerMask.NameToLayer("Pickup"))
+        {
+            isInRange = false;
+            objectToPickup = null;
+        }
     }
 }

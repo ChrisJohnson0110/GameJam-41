@@ -8,17 +8,18 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody rb;
     private Vector3 inputDirection;
 
-    void Start()
-    {
-        rb = GetComponent<Rigidbody>();
-    }
-
     void Update()
     {
         float h = Input.GetAxisRaw("Horizontal");
         float v = Input.GetAxisRaw("Vertical");
 
-        inputDirection = new Vector3(h, 0, v).normalized;
+        Vector3 forward = Camera.main.transform.forward;
+        Vector3 right = Camera.main.transform.right;
+        forward.y = 0f;
+        right.y = 0f;
+
+        //inputDirection = new Vector3(h, 0, v).normalized;
+        inputDirection = (h * right) + (v * forward);
 
         if (inputDirection == Vector3.zero)
         {
@@ -30,6 +31,7 @@ public class PlayerMovement : MonoBehaviour
             desiredForce = Vector3.ClampMagnitude(desiredForce, maxSpeed);
             rb.AddForce(desiredForce, ForceMode.Force);
         }
+
     }
 
 
