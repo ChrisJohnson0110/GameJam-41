@@ -20,7 +20,9 @@ public class Mouse : MonoBehaviour
         if (targetObject == null) //if no target get one
         {
             GetNearest();
-            if (targetObject == null)
+            
+            //this is causing a problem
+            if (targetObject == null && joint == null)
             {
                 MoveToRandom();
             }
@@ -70,13 +72,13 @@ public class Mouse : MonoBehaviour
     private void MoveToHole()
     {
         transform.position = Vector3.MoveTowards(gameObject.transform.position, mouseHole.transform.position, speed);
-        transform.position = new Vector3(transform.position.x, 0.47f, transform.position.z);
+        transform.position = new Vector3(transform.position.x, 0.26f, transform.position.z);
     }
 
     private void MoveToTarget()
     {
         transform.position = Vector3.MoveTowards(gameObject.transform.position, targetObject.transform.position, speed);
-        transform.position = new Vector3(transform.position.x, 0.47f, transform.position.z);
+        transform.position = new Vector3(transform.position.x, 0.26f, transform.position.z);
     }
     private void MoveToRandom()
     {
@@ -91,7 +93,7 @@ public class Mouse : MonoBehaviour
         if (Vector3.Distance(transform.position, targetPosition) > 0.1f)
         {
             transform.position = Vector3.MoveTowards(gameObject.transform.position, targetPosition, speed);
-            transform.position = new Vector3(transform.position.x, 0.47f, transform.position.z);
+            transform.position = new Vector3(transform.position.x, 0.26f, transform.position.z);
         }
         else
         {
@@ -140,7 +142,7 @@ public class Mouse : MonoBehaviour
         }
     }
 
-    private void Disconnect()
+    public void Disconnect()
     {
         pickupObjects.Remove(targetObject);
         targetObject = null;

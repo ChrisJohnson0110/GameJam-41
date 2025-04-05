@@ -47,7 +47,6 @@ public class PlayerMovement : MonoBehaviour
             desiredForce = Vector3.ClampMagnitude(desiredForce, maxSpeed);
             rb.AddForce(desiredForce, ForceMode.Force);
         }
-
     }
 
     private void GroundCheck()
