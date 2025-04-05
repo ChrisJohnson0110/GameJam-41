@@ -47,14 +47,17 @@ public class ObjectPickup : MonoBehaviour
         }
     }
 
-    private void Drop()
+    public void Drop()
     {
         if (joint != null)
         {
             Destroy(joint);
         }
-        heldObjectRb.GetComponent<PickupObject>().isHeld = false;
-        heldObjectRb = null;
+        if (heldObjectRb != null)
+        {
+            heldObjectRb.GetComponent<PickupObject>().isHeld = false;
+            heldObjectRb = null;
+        }
     }
 
     private void OnTriggerEnter(Collider other)

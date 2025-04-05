@@ -1,4 +1,5 @@
 using UnityEngine;
+using TMPro;
 
 [RequireComponent(typeof(Rigidbody))]
 public class PlayerMovement : MonoBehaviour
@@ -15,8 +16,8 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        HandleMovement();
-        GroundCheck();
+            HandleMovement();
+            GroundCheck();
     }
 
     private void HandleMovement()
@@ -34,6 +35,8 @@ public class PlayerMovement : MonoBehaviour
         right.Normalize();
 
         inputDirection = (h * right) + (v * forward);
+
+        inputDirection.Normalize();
 
         if (inputDirection == Vector3.zero)
         {
@@ -56,7 +59,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (!Physics.Raycast(ray, out RaycastHit hit, rayDistance))
         {
-            rb.AddForce(new Vector3(0, -50, 0));
+            rb.AddForce(new Vector3(0, -5000, 0));
         }
     }
 

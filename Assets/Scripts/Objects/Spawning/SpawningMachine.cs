@@ -11,13 +11,14 @@ public class SpawningMachine : MonoBehaviour
     [SerializeField] private int numberOfObjectsToSpawn = 5;
 
     [SerializeField] private int ButtonCooldown;
-    private float cooldown;
+    private float cooldown = 0;
     private bool canSpawnObjects;
+
+    [SerializeField] private Light buttonLight;
 
     private void Start()
     {
         spawnPostition = gameObject.transform.GetChild(0);
-        cooldown = ButtonCooldown;
     }
 
     private void Update()
@@ -26,12 +27,15 @@ public class SpawningMachine : MonoBehaviour
         {
             if (canSpawnObjects == false)
             {
+                GameObject.FindObjectOfType<InteractableButton>().ReturnToScale();
                 canSpawnObjects = true;
+                buttonLight.color = Color.green;
             }
         }
         else
         {
             cooldown -= Time.deltaTime;
+            buttonLight.color = Color.red;
         }
     }
 

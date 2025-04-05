@@ -6,7 +6,18 @@ public class InteractableButton : MonoBehaviour
 {
     [SerializeField] private SpawningMachine spawningMachineRef;
 
-    bool isInRange = false;
+    private bool isInRange = false;
+
+    private Vector3 originalScale;
+    [SerializeField] private Vector3 targetScale;
+    [SerializeField] private float animationDuration;
+
+    [SerializeField] private GameObject buttonObject;
+
+    private void Start()
+    {
+        originalScale = gameObject.transform.localScale;
+    }
 
     private void Update()
     {
@@ -15,9 +26,14 @@ public class InteractableButton : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.E))
             {
                 spawningMachineRef.SpawnObejcts();
-
+                buttonObject.transform.localScale = Vector3.Lerp(originalScale, targetScale, animationDuration);
             }
         }
+    }
+
+    public void ReturnToScale()
+    {
+        buttonObject.transform.localScale = originalScale;
     }
 
     private void OnTriggerEnter(Collider other)
