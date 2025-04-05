@@ -19,15 +19,6 @@ public class EatAnimation : MonoBehaviour
         StartCoroutine(Scale());
     }
 
-
-    //private IEnumerator Scale()
-    //{
-    //    mouth.transform.localScale = new Vector3(mouth.transform.localScale.x, mouth.transform.localScale.y, 2.5f);
-    //    yield return new WaitForSeconds(0.2f);
-    //    mouth.transform.localScale = new Vector3(mouth.transform.localScale.x, mouth.transform.localScale.y, 2.5f);
-    //    yield return new WaitForSeconds(0.2f);
-    //    mouth.transform.localScale = new Vector3(mouth.transform.localScale.x, mouth.transform.localScale.y, 2.5f);
-    //}
     private IEnumerator Scale()
     {
         float time = 0f;

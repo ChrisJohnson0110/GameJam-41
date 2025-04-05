@@ -35,7 +35,6 @@ public class PlayerMovement : MonoBehaviour
         right.Normalize();
 
         inputDirection = (h * right) + (v * forward);
-
         inputDirection.Normalize();
 
         if (inputDirection == Vector3.zero)
