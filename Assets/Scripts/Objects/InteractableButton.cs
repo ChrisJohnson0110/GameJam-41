@@ -27,6 +27,10 @@ public class InteractableButton : MonoBehaviour
             {
                 spawningMachineRef.SpawnObejcts();
                 buttonObject.transform.localScale = Vector3.Lerp(originalScale, targetScale, animationDuration);
+                if (GameObject.FindAnyObjectByType<FloatingText>())
+                {
+                    GameObject.FindAnyObjectByType<FloatingText>().DestroyFloatingText();
+                }
             }
         }
     }

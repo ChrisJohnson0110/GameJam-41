@@ -11,7 +11,21 @@ public class DoorEat : MonoBehaviour
     {
         hungerBar = GameObject.FindAnyObjectByType<HungerMeter>();
     }
-
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.layer == LayerMask.NameToLayer("Pickup"))
+        {
+            if (other.GetComponent<PickupObject>().isHeld == true)
+            {
+                hungerBar.DecreaseHunger(other.gameObject.GetComponent<PickupObject>().eatValue);
+                Destroy(other.gameObject);
+                GameObject.FindAnyObjectByType<EatAnimation>().Eat();
+                doorObject.transform.localScale += (doorObject.transform.localScale * 0.02f);
+                GameObject.FindObjectOfType<ObjectPickup>().Drop();
+                gameObject.GetComponent<AudioSource>().Play();
+            }
+        }
+    }
     private void OnTriggerStay(Collider other)
     {
         if (other.gameObject.layer == LayerMask.NameToLayer("Pickup"))
