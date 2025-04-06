@@ -5,7 +5,7 @@ using UnityEngine;
 public class Mouse : MonoBehaviour
 {
     private List<GameObject> pickupObjects = new List<GameObject>();
-    private GameObject targetObject;
+    [HideInInspector] public  GameObject targetObject;
     [SerializeField] private GameObject mouseHole;
     [SerializeField] private float speed;
     [HideInInspector] public FixedJoint joint;
@@ -125,6 +125,20 @@ public class Mouse : MonoBehaviour
         }
     }
 
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.gameObject.GetComponent<PickupObject>())
+        {
+            if (targetObject != null)
+            {
+                if (other.gameObject == targetObject)
+                {
+                    Connect();
+                }
+            }
+        }
+    }
+
     IEnumerator Delay()
     {
         yield return new WaitForSeconds(2);
@@ -141,11 +155,15 @@ public class Mouse : MonoBehaviour
             if (targetObject.GetComponent<PickupObject>().isHeld == false)
             {
                 //make a joint connection to the object
-                Rigidbody rb = targetObject.GetComponent<Rigidbody>();
-                if (rb != null && !rb.isKinematic)
+                if (joint == null)
                 {
-                    joint = gameObject.AddComponent<FixedJoint>();
-                    joint.connectedBody = targetObject.gameObject.GetComponent<Rigidbody>();
+                    Rigidbody rb = targetObject.GetComponent<Rigidbody>();
+                    if (rb != null && !rb.isKinematic)
+                    {
+                        joint = gameObject.AddComponent<FixedJoint>();
+                        joint.connectedBody = targetObject.gameObject.GetComponent<Rigidbody>();
+                    }
+                    targetObject.GetComponent<PickupObject>().isRat = true;
                 }
             }
         }
@@ -154,6 +172,7 @@ public class Mouse : MonoBehaviour
     public void Disconnect()
     {
         pickupObjects.Remove(targetObject);
+        targetObject.GetComponent<PickupObject>().isRat = false;
         targetObject = null;
 
         if (joint != null)

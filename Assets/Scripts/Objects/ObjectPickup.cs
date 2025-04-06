@@ -42,6 +42,11 @@ public class ObjectPickup : MonoBehaviour
                     joint = gameObject.AddComponent<FixedJoint>();
                     joint.connectedBody = heldObjectRb;
                     heldObjectRb.GetComponent<PickupObject>().isHeld = true;
+                    heldObjectRb.GetComponent<PickupObject>().isRat = false;
+                    if (heldObjectRb == GameObject.FindAnyObjectByType<Mouse>().targetObject)
+                    {
+                        GameObject.FindAnyObjectByType<Mouse>().Disconnect();
+                    }
                 }
             }
         }

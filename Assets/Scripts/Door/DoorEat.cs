@@ -23,6 +23,7 @@ public class DoorEat : MonoBehaviour
                 GameObject.FindAnyObjectByType<EatAnimation>().Eat();
                 doorObject.transform.localScale += (doorObject.transform.localScale * 0.02f);
                 GameObject.FindObjectOfType<ObjectPickup>().Drop();
+                gameObject.GetComponent<AudioSource>().Play();
             }
         }
     }

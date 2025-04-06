@@ -18,6 +18,9 @@ public class RatRotation : MonoBehaviour
         // Rotate 90 degrees to the left (around Y-axis)
         Vector3 rotatedDirection = Quaternion.Euler(0, -90, 0) * movementDirection;
 
-        gameObject.transform.localRotation = Quaternion.LookRotation(rotatedDirection, Vector3.up);
+        if (rotatedDirection != Vector3.zero)
+        {
+            gameObject.transform.localRotation = Quaternion.LookRotation(rotatedDirection, Vector3.up);
+        }
     }
 }
