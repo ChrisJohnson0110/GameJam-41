@@ -1174,7 +1174,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13bf7d325f3939344944d8b4c0707111, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EatCooldown: 1
+  EatCooldown: 0.7
 --- !u!114 &1586926614
 MonoBehaviour:
   m_ObjectHideFlags: 0
