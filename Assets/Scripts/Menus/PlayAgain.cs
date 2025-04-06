@@ -9,4 +9,9 @@ public class PlayAgain : MonoBehaviour
     {
         SceneManager.LoadScene("GameScene");
     }
+
+    public void ExitGame()
+    {
+        Application.Quit();
+    }
 }
