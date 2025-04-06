@@ -35,7 +35,7 @@ public class SyncWithMovement : MonoBehaviour
             //transform.localScale = startingScale;
             //playAnim = false;
         }
-        if(playerMovementRef.GetComponent<Rigidbody>().velocity.magnitude > 1f)
+        if(playerMovementRef.GetComponent<Rigidbody>().velocity.magnitude > 2f)
         {
             playAnim = true;
             StartCoroutine(MoveAnimation());

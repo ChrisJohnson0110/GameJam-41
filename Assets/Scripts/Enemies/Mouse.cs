@@ -21,7 +21,6 @@ public class Mouse : MonoBehaviour
         {
             GetNearest();
             
-            //this is causing a problem
             if (targetObject == null && joint == null)
             {
                 MoveToRandom();
@@ -36,6 +35,7 @@ public class Mouse : MonoBehaviour
             else //if not connected move to object
             {
                 MoveToTarget();
+                transform.LookAt(targetObject.transform);
             }
 
             if (targetObject.gameObject.GetComponent<PickupObject>().isHeld == true)
@@ -43,6 +43,7 @@ public class Mouse : MonoBehaviour
                 Disconnect();
             }
         }
+
     }
 
     private void GetNearest()
@@ -51,10 +52,14 @@ public class Mouse : MonoBehaviour
 
         foreach (PickupObject g in GameObject.FindObjectsOfType<PickupObject>())
         {
-            if (g.GetComponent<PickupObject>().isHeld == false)
+            if (g.gameObject.transform.localPosition.y < 2.5f)
             {
-                pickupObjects.Add(g.gameObject);
+                if (g.GetComponent<PickupObject>().isHeld == false)
+                {
+                    pickupObjects.Add(g.gameObject);
+                }
             }
+            
         }
         foreach (GameObject go in pickupObjects) //get nearest
         {
