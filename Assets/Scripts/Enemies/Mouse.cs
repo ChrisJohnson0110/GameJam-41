@@ -14,13 +14,12 @@ public class Mouse : MonoBehaviour
     public Vector2 roomMaxBounds = new Vector2(5f, 5f);
     private Vector3 targetPosition;
 
-
     private void Update()
     {
         if (targetObject == null) //if no target get one
         {
             GetNearest();
-            
+
             if (targetObject == null && joint == null)
             {
                 MoveToRandom();
@@ -35,30 +34,20 @@ public class Mouse : MonoBehaviour
             else //if not connected move to object
             {
                 MoveToTarget();
-                //Quaternion targetRotation = Quaternion.LookRotation(targetObject.transform.position);
-                ////transform.localRotation
-                //transform.localRotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * 2f);
+                //Vector3 v = transform.position;
+                //v -= targetPosition;
+                //v.Normalize();
 
-                ////gameObject.transform.localRotation = Quaternion.Lerp(gameObject.transform.rotation, Quaternion.LookRotation(targetObject.transform.position), 2f);
-
-                Quaternion lookRotation = Quaternion.LookRotation(targetObject.transform.position);
-
-                // Adjust by -90 degrees so +X becomes forward instead of +Z
-                Quaternion rotationOffset = Quaternion.Euler(0f, -90f, 0f);
-                Quaternion adjustedRotation = lookRotation * rotationOffset;
-
-                // Smoothly rotate to that adjusted rotation
-                transform.rotation = Quaternion.Slerp(transform.rotation, adjustedRotation, Time.deltaTime * 2);
-
-                transform.rotation = Vector3(0,0,0);
+                //Vector3 lookDirection = Quaternion.Euler(0, 0, 0) * v;
+                //Quaternion targetRotation = Quaternion.LookRotation(lookDirection, Vector3.up);
+                //gameObject.transform.localRotation = Quaternion.Lerp(gameObject.transform.rotation, targetRotation, Time.deltaTime * 200000f);
             }
 
-            if (targetObject.gameObject.GetComponent<PickupObject>().isHeld == true)
-            {
-                Disconnect();
-            }
+           if (targetObject.gameObject.GetComponent<PickupObject>().isHeld == true)
+           {
+               Disconnect();
+           }
         }
-
     }
 
     private void GetNearest()
