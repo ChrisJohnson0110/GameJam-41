@@ -14,7 +14,7 @@ public class InitialSpawning : MonoBehaviour
     {
         for (int i = 0; i < numberToSpawn; i++)
         {
-            GameObject go = Instantiate(objectsToSpawn[Random.Range(0, objectsToSpawn.Count)], new Vector3(Random.Range(-spawningRange, spawningRange), 0, Random.Range(-spawningRange, spawningRange)), transform.rotation);
+            GameObject go = Instantiate(objectsToSpawn[Random.Range(0, objectsToSpawn.Count -1)], new Vector3(Random.Range(-spawningRange, spawningRange), 0, Random.Range(-spawningRange, spawningRange)), transform.rotation);
             go.transform.SetParent(pickupObjectHolder);
         }
     }

@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 707285288468703876}
   - component: {fileID: 4503339789097264417}
   - component: {fileID: 1845320141753455083}
-  - component: {fileID: 8915985557424563330}
   - component: {fileID: 8400217064813953566}
   - component: {fileID: 8687737583005726129}
+  - component: {fileID: 5669144150918869481}
   m_Layer: 8
   m_Name: Sword
   m_TagString: Untagged
@@ -87,20 +87,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &8915985557424563330
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 187770835224309822}
-  m_Material: {fileID: 13400000, guid: e8477ebd0e3197e4895dd4d06dda3cd4, type: 2}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4686849319519084627, guid: 62b11278ff9679a41ae16cc8f0c18ecc, type: 3}
 --- !u!114 &8400217064813953566
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -114,7 +100,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isHeld: 0
-  eatValue: 5
+  eatValue: 4
 --- !u!54 &8687737583005726129
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -131,3 +117,16 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!65 &5669144150918869481
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 187770835224309822}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.038540766, y: 0.0090972, z: 0.0013640565}
+  m_Center: {x: -0.00832976, y: 2.328306e-10, z: 0}

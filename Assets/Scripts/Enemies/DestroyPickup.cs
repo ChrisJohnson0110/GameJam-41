@@ -8,13 +8,15 @@ public class DestroyPickup : MonoBehaviour
     {
         if (other.gameObject.layer == LayerMask.NameToLayer("Pickup"))
         {
-            other.GetComponent<PickupObject>().isHeld = false;
-            Destroy(other.gameObject);
-            foreach (Mouse go in GameObject.FindObjectsOfType<Mouse>())
+            if (other.gameObject.GetComponent<PickupObject>().isHeld == false)
             {
-                go.Disconnect();
+                other.GetComponent<PickupObject>().isHeld = false;
+                Destroy(other.gameObject);
+                foreach (Mouse go in GameObject.FindObjectsOfType<Mouse>())
+                {
+                    go.Disconnect();
+                }
             }
-            
         }
     }
 }

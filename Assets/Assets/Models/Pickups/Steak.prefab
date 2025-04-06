@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 7974326205244462252}
   - component: {fileID: 6414714639327714057}
   - component: {fileID: 9142680750002319299}
-  - component: {fileID: 3679789811943715249}
   - component: {fileID: 9126616253483099077}
   - component: {fileID: -831381855005872142}
+  - component: {fileID: -5999884783190405257}
   m_Layer: 8
   m_Name: Steak
   m_TagString: Untagged
@@ -87,20 +87,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &3679789811943715249
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7341342121927839254}
-  m_Material: {fileID: 13400000, guid: e8477ebd0e3197e4895dd4d06dda3cd4, type: 2}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 6397850980617265312, guid: 674f7087c15b365419f0da8a1599ae1c, type: 3}
 --- !u!114 &9126616253483099077
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -114,7 +100,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isHeld: 0
-  eatValue: 5
+  eatValue: 3
 --- !u!54 &-831381855005872142
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -131,3 +117,16 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!65 &-5999884783190405257
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7341342121927839254}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.0061473367, y: 0.009333905, z: 0.0019141807}
+  m_Center: {x: 0.000015507452, y: -0.00025505916, z: -0.00022896838}

@@ -27,14 +27,8 @@ public class SyncWithMovement : MonoBehaviour
         if (playerMovementRef.inputDirection != Vector3.zero)
         {
             gameObject.transform.rotation = Quaternion.Lerp(gameObject.transform.rotation, Quaternion.LookRotation(-playerMovementRef.inputDirection), rotationSmooth);
-            //playAnim = true;
-            //StartCoroutine(MoveAnimation());
         }
-        else
-        {
-            //transform.localScale = startingScale;
-            //playAnim = false;
-        }
+
         if(playerMovementRef.GetComponent<Rigidbody>().velocity.magnitude > 2f)
         {
             playAnim = true;

@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 5831569466915229660}
   - component: {fileID: 7440577829591318649}
   - component: {fileID: 4658632230705362099}
-  - component: {fileID: 159271444931712902}
   - component: {fileID: 1577469232487800699}
   - component: {fileID: 2661166094238081009}
+  - component: {fileID: -8887360930917910934}
   m_Layer: 8
   m_Name: Cheese02
   m_TagString: Untagged
@@ -86,20 +86,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &159271444931712902
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6604024336159298918}
-  m_Material: {fileID: 13400000, guid: e8477ebd0e3197e4895dd4d06dda3cd4, type: 2}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -4717421891991776377, guid: 9300c3a0b13fe2f48b758bccbdbff044, type: 3}
 --- !u!114 &1577469232487800699
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -113,7 +99,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isHeld: 0
-  eatValue: 5
+  eatValue: 2
 --- !u!54 &2661166094238081009
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -130,3 +116,16 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!65 &-8887360930917910934
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6604024336159298918}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.014340127, y: 0.014318336, z: 0.004551537}
+  m_Center: {x: -0.00001460663, y: -0.00002933945, z: 2.328306e-10}

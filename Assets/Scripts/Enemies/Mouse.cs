@@ -35,7 +35,22 @@ public class Mouse : MonoBehaviour
             else //if not connected move to object
             {
                 MoveToTarget();
-                transform.LookAt(targetObject.transform);
+                //Quaternion targetRotation = Quaternion.LookRotation(targetObject.transform.position);
+                ////transform.localRotation
+                //transform.localRotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * 2f);
+
+                ////gameObject.transform.localRotation = Quaternion.Lerp(gameObject.transform.rotation, Quaternion.LookRotation(targetObject.transform.position), 2f);
+
+                Quaternion lookRotation = Quaternion.LookRotation(targetObject.transform.position);
+
+                // Adjust by -90 degrees so +X becomes forward instead of +Z
+                Quaternion rotationOffset = Quaternion.Euler(0f, -90f, 0f);
+                Quaternion adjustedRotation = lookRotation * rotationOffset;
+
+                // Smoothly rotate to that adjusted rotation
+                transform.rotation = Quaternion.Slerp(transform.rotation, adjustedRotation, Time.deltaTime * 2);
+
+                transform.rotation = Vector3(0,0,0);
             }
 
             if (targetObject.gameObject.GetComponent<PickupObject>().isHeld == true)

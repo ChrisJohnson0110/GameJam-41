@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 7797902089781417132}
   - component: {fileID: 6600145340941048585}
   - component: {fileID: 8970214424219316163}
-  - component: {fileID: 2631429780024676541}
   - component: {fileID: 2935110679635948042}
   - component: {fileID: -7797062713831447467}
+  - component: {fileID: -2199272406423247901}
   m_Layer: 8
   m_Name: Apple
   m_TagString: Untagged
@@ -87,20 +87,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &2631429780024676541
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7456947294072655382}
-  m_Material: {fileID: 13400000, guid: e8477ebd0e3197e4895dd4d06dda3cd4, type: 2}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -472147775963580301, guid: 18e1d70a0c2353e4e8663c1ea779d7cc, type: 3}
 --- !u!114 &2935110679635948042
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -114,7 +100,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isHeld: 0
-  eatValue: 5
+  eatValue: 2
 --- !u!54 &-7797062713831447467
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -131,3 +117,16 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!65 &-2199272406423247901
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7456947294072655382}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.0065184776, y: 0.006493465, z: 0.006397553}
+  m_Center: {x: -0.000119253644, y: 0.00032197573, z: -0.00022327279}

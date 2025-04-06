@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 7310828949629999183}
   - component: {fileID: 5970246591743367146}
   - component: {fileID: 8448300921410642720}
-  - component: {fileID: 5783351126579533520}
   - component: {fileID: 5121207434275736663}
   - component: {fileID: 2878125574547578631}
+  - component: {fileID: 7409953651815708615}
   m_Layer: 8
   m_Name: Fish
   m_TagString: Untagged
@@ -86,20 +86,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &5783351126579533520
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7943954594531820277}
-  m_Material: {fileID: 13400000, guid: e8477ebd0e3197e4895dd4d06dda3cd4, type: 2}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 2586148439552901436, guid: d74e77bd8eecfaa46809e4448add591f, type: 3}
 --- !u!114 &5121207434275736663
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -113,7 +99,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isHeld: 0
-  eatValue: 5
+  eatValue: 2
 --- !u!54 &2878125574547578631
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -130,3 +116,16 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!65 &7409953651815708615
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7943954594531820277}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.005622915, y: 0.009875333, z: 0.002193377}
+  m_Center: {x: -0.0004353627, y: 0.000098697594, z: 0}
