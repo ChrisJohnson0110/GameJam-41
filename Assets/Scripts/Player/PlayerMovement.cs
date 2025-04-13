@@ -14,7 +14,7 @@ public class PlayerMovement : MonoBehaviour
         rb = GetComponent<Rigidbody>();
     }
 
-    void Update()
+    void FixedUpdate()
     {
             HandleMovement();
             GroundCheck();
@@ -31,6 +31,7 @@ public class PlayerMovement : MonoBehaviour
         forward.y = 0f;
         right.y = 0f;
 
+
         forward.Normalize();
         right.Normalize();
 
@@ -45,7 +46,12 @@ public class PlayerMovement : MonoBehaviour
         {
             Vector3 desiredForce = inputDirection * moveSpeed;
             desiredForce = Vector3.ClampMagnitude(desiredForce, maxSpeed);
-            rb.AddForce(desiredForce, ForceMode.Force);
+            rb.AddForce(desiredForce, ForceMode.Acceleration);
+        }
+
+        if (rb.velocity.magnitude > maxSpeed)
+        {
+            rb.velocity = rb.velocity.normalized * maxSpeed;
         }
     }
 

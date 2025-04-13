@@ -18,12 +18,12 @@ public class FloatingText : MonoBehaviour
     {
         textObject = new GameObject("FloatingText");
         textObject.transform.SetParent(parent.transform);
-        textObject.transform.localPosition = new Vector3(0, 0.0067f, 0.00632f);
-        textObject.transform.rotation = Quaternion.Euler(0, 90, 0);
+        textObject.transform.localPosition = new Vector3(0.0067f, 0.0084f, 0.01f);
+        textObject.transform.rotation = Quaternion.Euler(0, 104, 0);
 
         TextMeshPro textMesh = textObject.AddComponent<TextMeshPro>();
         textMesh.text = textContent;
-        textMesh.fontSize = 9;
+        textMesh.fontSize = 8;
         textMesh.alignment = TextAlignmentOptions.Center;
         textMesh.color = Color.magenta;
         textMesh.richText = true; // Enables color formatting

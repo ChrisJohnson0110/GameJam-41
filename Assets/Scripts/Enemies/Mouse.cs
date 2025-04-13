@@ -14,7 +14,7 @@ public class Mouse : MonoBehaviour
     public Vector2 roomMaxBounds = new Vector2(5f, 5f);
     private Vector3 targetPosition;
 
-    private void Update()
+    private void FixedUpdate()
     {
         if (targetObject == null) //if no target get one
         {
@@ -34,13 +34,6 @@ public class Mouse : MonoBehaviour
             else //if not connected move to object
             {
                 MoveToTarget();
-                //Vector3 v = transform.position;
-                //v -= targetPosition;
-                //v.Normalize();
-
-                //Vector3 lookDirection = Quaternion.Euler(0, 0, 0) * v;
-                //Quaternion targetRotation = Quaternion.LookRotation(lookDirection, Vector3.up);
-                //gameObject.transform.localRotation = Quaternion.Lerp(gameObject.transform.rotation, targetRotation, Time.deltaTime * 200000f);
             }
 
            if (targetObject.gameObject.GetComponent<PickupObject>().isHeld == true)
