@@ -1,8 +1,8 @@
 using UnityEngine;
-using TMPro;
+using Unity.Netcode;
 
 [RequireComponent(typeof(Rigidbody))]
-public class PlayerMovement : MonoBehaviour
+public class PlayerMovement : NetworkBehaviour
 {
     public float moveSpeed = 6f;
     public float maxSpeed = 6f;

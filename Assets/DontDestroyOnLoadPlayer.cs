@@ -10,7 +10,11 @@ public class DontDestroyOnLoadPlayer : MonoBehaviour
         DontDestroyOnLoad(this.gameObject);
         for (int i = 0; i < gameObject.transform.childCount; i++)
         {
-            gameObject.transform.GetChild(i).gameObject.SetActive(false);
+            //gameObject.transform.GetChild(i).gameObject.SetActive(false);
+            if (gameObject.transform.GetChild(i).GetComponent<Rigidbody>() != null)
+            {
+                gameObject.transform.GetChild(i).GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
+            }
         }
     }
 
@@ -18,7 +22,11 @@ public class DontDestroyOnLoadPlayer : MonoBehaviour
     {
         for (int i = 0; i < gameObject.transform.childCount; i++)
         {
-            gameObject.transform.GetChild(i).gameObject.SetActive(true);
+            //gameObject.transform.GetChild(i).gameObject.SetActive(true);
+            if (gameObject.transform.GetChild(i).GetComponent<Rigidbody>() != null)
+            {
+                gameObject.transform.GetChild(i).GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
+            }
         }
     }
 }

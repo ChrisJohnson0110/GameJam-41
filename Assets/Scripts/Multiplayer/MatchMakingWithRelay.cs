@@ -16,7 +16,7 @@ using UnityEngine.SceneManagement;
 /// text for join code
 /// input field to join host
 /// </summary>
-public class MatchMakingWithRelay : MonoBehaviour
+public class MatchMakingWithRelay : NetworkBehaviour
 {
     [SerializeField] private TMP_Text _joinCodeText;
     [SerializeField] private TMP_InputField _joinInput;
@@ -79,6 +79,8 @@ public class MatchMakingWithRelay : MonoBehaviour
 
     public void StartGame()
     {
-        SceneManager.LoadScene("GameScene");
+        //SceneManager.LoadScene("GameScene");
+        NetworkManager.Singleton.SceneManager.LoadScene("GameScene", UnityEngine.SceneManagement.LoadSceneMode.Single);
+
     }
 }
