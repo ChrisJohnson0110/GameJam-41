@@ -21,6 +21,11 @@ public class MainMenu : MonoBehaviour
         SceneManager.LoadScene("GameScene");
     }
 
+    public void Multiplayer()
+    {
+        SceneManager.LoadScene("MultiplayerSetup");
+    }
+
     IEnumerator LoadSceneInBackground()
     {
         asyncLoad = SceneManager.LoadSceneAsync("GameScene");

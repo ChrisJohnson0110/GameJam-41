@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Lose.unity
     guid: 715367de7e3738f40b85e7e93fd1bd82
+  - enabled: 1
+    path: Assets/Scenes/MultiplayerSetup.unity
+    guid: cde8fa004d0e3894185d86d724f6a791
   m_configObjects: {}
